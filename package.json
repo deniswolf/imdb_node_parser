@@ -1,0 +1,10 @@
+{
+  "name": "imdb_import",
+  "version": "0.0.1",
+  "description": "A tool for downloading and parsing data from IMDB",
+  "dependencies": {
+    "coffee-script": "~1.6.3",
+    "ftp": "~0.3.5",
+    "lazy": "~1.0.11"
+  }
+}

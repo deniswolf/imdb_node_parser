@@ -30,7 +30,12 @@ describe('Parser', function(){
 		});
 
 		it('should process multiple lines', function(){
+			var linesWithTitles = "\"Salmon & Pumkin\" (1995) {I Think I do/Or's Off Day Off (#3.8)}	1996\n" +
+					"Þettwa er ekkert mál (2006)				2006\n",
+				parsedJSONObject = [{"title":"Salmon & Pumkin","year":"1995"},{"title":"Þettwa er ekkert mál","year":"2006"}],
+				output = parsers.imdbLikeMovie(linesWithTitles	);
 
+			assert.deepEqual(output, parsedJSONObject);
 		});
 	});
 });

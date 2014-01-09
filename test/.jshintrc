@@ -1,0 +1,12 @@
+{
+	"globals": {
+		"it": false,
+		"console": false,
+		"describe": false,
+		"expect": false,
+		"beforeEach": false,
+		"waits": false,
+		"waitsFor": false,
+		"runs": false
+	}
+}

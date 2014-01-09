@@ -15,14 +15,14 @@ describe('Parser', function(){
 
 	describe('for movies', function(){
 		it('should extract title and year', function(){
-			var lineWithTitle = "\"Salmon & Pumkin\" (1995) {I Think I Biwanwadwa/Zwazu's Off Dway Off (#3.8)}	1996\n",
+			var lineWithTitle = "\"Salmon & Pumkin\" (1995) {I Think I Biwanwadwa/Zwazu's Off Dway Off (#3.8)}	1996",
 				parsedJSONObject = [{title:'Salmon & Pumkin', year: "1995"}],
 				output = parsers.movies(lineWithTitle);
 			assert.deepEqual(output, parsedJSONObject);
 		});
 
 		it('should parse line for series', function(){
-			var lineWithTitleAndEpisode = "\"Salmon & Pumkin\" (1995) {I Think I do/Or's Off Day Off (#3.8)}	1996\n",
+			var lineWithTitleAndEpisode = "\"Salmon & Pumkin\" (1995) {I Think I do/Or's Off Day Off (#3.8)}	1996",
 				parsedJSONObject = [{title:'Salmon & Pumkin', year: "1995"}],
 				output = parsers.movies(lineWithTitleAndEpisode);
 

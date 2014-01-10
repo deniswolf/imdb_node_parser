@@ -39,3 +39,24 @@ describe('Parser', function(){
 		});
 	});
 });
+
+
+return;
+
+
+var i = require('./lib/import');
+i('./fixtures/movies.fixture','movies');
+
+var fs = require('fs');
+var source = fs.createReadStream('./fixtures/movies.fixture');
+
+p = require('./lib/import')(source,'movie');
+
+
+p.on('readable', function () {
+
+	var line = p.read();
+	console.log('aaaa',line);
+});
+
+source.pipe(liner).pipe(p);

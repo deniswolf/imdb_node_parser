@@ -1,10 +1,8 @@
 var assert = require("assert");
 var parsers = require("../../lib/parsers");
 
-describe('Parser', function(){
-
-	describe('for movie.list', function(){
-		describe('when parse line with a movie', function(){
+	describe('Parser for movie.list', function(){
+		describe('when receives line with a movie', function(){
 			it('should extract title and year', function(){
 				var lineWithTitle = "\"Salmon & Pumkin\" (1995)",
 					parsedJSONObject = [{title:'Salmon & Pumkin', year: "1995", type:"movie"}],
@@ -30,7 +28,7 @@ describe('Parser', function(){
 			});
 		});
 
-		describe('when parse line with an episode', function(){
+		describe('when receives line with an episode', function(){
 			it('should extract title and year', function(){
 				var lineWithTitle = "\"Salmon & Pumkin\" (1995)" +
 						" {I Think I Biwanwadwa/Zwazu's Off Dway Off (#3.8)}	1996",
@@ -51,8 +49,20 @@ describe('Parser', function(){
 				assert.deepEqual(output, parsedJSONObject);
 			});
 		});
+
+		describe('when receives a comment or general text line', function(){
+			it('returns null', function(){
+				var comment = "------ lalala",
+					output = parsers.movies(comment);
+
+				assert.deepEqual([null], output);
+			});
+		});
+
+		describe('when receives a bulk of mixed data', function(){
+
+		});
 	});
-});
 
 
 

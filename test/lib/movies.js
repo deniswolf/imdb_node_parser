@@ -1,5 +1,7 @@
-var assert = require("assert");
-var parsers = require("../../lib/parsers");
+var fs = require('fs'),
+		path = require('path'),
+		assert = require("assert"),
+		parsers = require("../../lib/parsers");
 
 	describe('Parser for movie.list', function(){
 		describe('when receives line with a movie', function(){
@@ -60,6 +62,15 @@ var parsers = require("../../lib/parsers");
 		});
 
 		describe('when receives a bulk of mixed data', function(){
+			var bulkTextExample = fs.readFileSync(path.join(__dirname, '../../fixtures/movies.fixture'), 'utf8');
+
+			try {
+				output = parsers.movies(bulkTextExample);
+			} catch (e){
+				console.log(e)
+			}
+
+
 
 		});
 	});

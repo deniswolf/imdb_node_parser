@@ -3,14 +3,14 @@ var fs = require('fs'),
 		chai = require('chai'),
 		chaiThings = chai.use(require('chai-things')),
 		expect = chai.expect,
-		parsers = require("../../lib/parsers");
+		parser = require("../../lib/parser").movie;
 
 	describe('Parser for movie.list', function(){
 		describe('when receives line with a movie', function(){
 			it('should extract title and year', function(){
 				var lineWithTitle = "\"Salmon & Pumkin\" (1995)",
 					parsedJSONObject = [{title:'Salmon & Pumkin', year: "1995", type:"movie"}],
-					output = parsers.movies(lineWithTitle);
+					output = parser(lineWithTitle);
 				expect(output).to.deep.equal(parsedJSONObject);
 			});
 
@@ -18,7 +18,7 @@ var fs = require('fs'),
 				var linesWithTitles = "\"Salmon & Pumkin\" (1995)\n" +
 						"Þettwa er ekkert mál (2006)				2006\n",
 					parsedJSONObject = [{"title":"Salmon & Pumkin","year":"1995", type:"movie"},{"title":"Þettwa er ekkert mál","year":"2006", type:"movie"}],
-					output = parsers.movies(linesWithTitles	);
+					output = parser(linesWithTitles	);
 
 				expect(output).to.deep.equal(parsedJSONObject);
 			});
@@ -36,7 +36,7 @@ var fs = require('fs'),
 						},
 						type: 'series'
 					}],
-					output = parsers.movies(lineWithTitleAndEpisode);
+					output = parser(lineWithTitleAndEpisode);
 
 				expect(output).to.deep.equal(parsedJSONObject);
 			});
@@ -59,7 +59,7 @@ var fs = require('fs'),
 							}
 						}
 					],
-					output = parsers.movies(lineWithTitle);
+					output = parser(lineWithTitle);
 				expect(output).to.deep.equal(parsedJSONObject);
 			});
 
@@ -78,7 +78,7 @@ var fs = require('fs'),
 							}
 						}
 					],
-					output = parsers.movies(lineWithTitle);
+					output = parser(lineWithTitle);
 				expect(output).to.deep.equal(parsedJSONObject);
 			});
 		});
@@ -86,14 +86,14 @@ var fs = require('fs'),
 		describe('when receives a comment or general text line', function(){
 			it('returns null', function(){
 				var comment = "------ lalala",
-					output = parsers.movies(comment);
+					output = parser(comment);
 
 				expect(output).to.deep.equal([null]);
 			});
 		});
 
 		describe('when receives a bulk of mixed data', function () {
-			var bulkTextExample = fs.readFileSync(path.join(__dirname, '../../fixtures/movies.fixture'), 'utf8'),
+			var bulkTextExample = fs.readFileSync(path.join(__dirname, '../../fixtures/movie.fixture'), 'utf8'),
 					exampleEpisode = {
 						"title": "#3 Zingle",
 						"year": "2006",
@@ -120,7 +120,7 @@ var fs = require('fs'),
 					outputWithoutEmptyLines = [];
 
 			try {
-				output = parsers.movies(bulkTextExample);
+				output = parser(bulkTextExample);
 			} catch (e) {
 				console.log(e);
 			}
@@ -130,7 +130,7 @@ var fs = require('fs'),
 			it('should extract all entities properly',function(){
 				expect(outputWithoutEmptyLines).to.have.length(236);
 			});
-			it('should extract movies', function(){
+			it('should extract movie', function(){
 				expect(outputWithoutEmptyLines).to.include.one.deep.equal(exampleMovie);
 			});
 			it('should extract series', function(){

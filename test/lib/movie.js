@@ -9,7 +9,7 @@ var fs = require('fs'),
 		describe('when receives line with a movie', function(){
 			it('should extract title and year', function(){
 				var lineWithTitle = "\"Salmon & Pumkin\" (1995)",
-					parsedJSONObject = [{title:'Salmon & Pumkin', year: "1995", type:"movie"}],
+					parsedJSONObject = [{title:'Salmon & Pumkin', year: "1995", "version": null, type:"movie"}],
 					output = parser(lineWithTitle);
 				expect(output).to.deep.equal(parsedJSONObject);
 			});
@@ -17,10 +17,29 @@ var fs = require('fs'),
 			it('should process multiple lines', function(){
 				var linesWithTitles = "\"Salmon & Pumkin\" (1995)\n" +
 						"Þettwa er ekkert mál (2006)				2006\n",
-					parsedJSONObject = [{"title":"Salmon & Pumkin","year":"1995", type:"movie"},{"title":"Þettwa er ekkert mál","year":"2006", type:"movie"}],
+					parsedJSONObject = [
+						{"title":"Salmon & Pumkin","year":"1995", "version": null,  type:"movie"},
+						{"title":"Þettwa er ekkert mál","year":"2006", "version": null, type:"movie"}
+					],
 					output = parser(linesWithTitles	);
 
 				expect(output).to.deep.equal(parsedJSONObject);
+			});
+		});
+
+		describe('when different movies have the same name', function(){
+			it('should return specific version suffix', function(){
+				var linesWithMovies = "Nostalgia (2006/I)          2006\n"+
+						"Nostalgia (2006/II)         2006\n"+
+						"Nostalgia (2007)          2007\n"+
+						"Nostalgia (2008)          2008\n",
+						firstMovie = { title: 'Nostalgia', year: '2006', version: 'I', type: 'movie' },
+						secondMovie = { title: 'Nostalgia', year: '2006', version: 'II', type: 'movie' },
+						output = parser(linesWithMovies);
+
+				expect(output).
+					to.include.one.deep.equal(firstMovie)
+					.and.include.one.deep.equal(secondMovie);
 			});
 		});
 
@@ -34,6 +53,7 @@ var fs = require('fs'),
 							from: "2013",
 							to: "????"
 						},
+						"version": null,
 						type: 'series'
 					}],
 					output = parser(lineWithTitleAndEpisode);
@@ -50,6 +70,7 @@ var fs = require('fs'),
 						{
 							title:"Salmon & Pumkin",
 							year: "1995",
+							"version": null,
 							type: "episode",
 							episode: {
 								title: "I Think I Biwanwadwa/Zwazu's Off Dway Off",
@@ -69,6 +90,7 @@ var fs = require('fs'),
 						{
 							title:"Bi.L.wnya. No somos ángeles",
 							year: "2007",
+							"version": null,
 							type: "episode",
 							episode: {
 								title: null,
@@ -97,6 +119,7 @@ var fs = require('fs'),
 					exampleEpisode = {
 						"title": "#3 Zingle",
 						"year": "2006",
+						"version": null,
 						"type": "episode",
 						"episode": {
 							"title": "Is the Grwnyass Greener?",
@@ -108,11 +131,13 @@ var fs = require('fs'),
 					exampleMovie = {
 						"title": "Znyachaznyarownyane podwórko",
 						"year": "1974",
+						"version": null,
 						"type": "movie"
 					},
 					exampleSeries = {
 						"title": "#3 Zingle",
 						"year": "2006",
+						"version": null,
 						"type": "series",
 						"running": {"from":"2006", "to":"????"}
 					},

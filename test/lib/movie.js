@@ -93,7 +93,7 @@ var fs = require('fs'),
 		});
 
 		describe('when receives a bulk of mixed data', function () {
-			var bulkTextExample = fs.readFileSync(path.join(__dirname, '../../fixtures/movie.fixture'), 'utf8'),
+			var bulkTextExample = fs.readFileSync(path.join(__dirname, '../../fixtures/movies.fixture'), 'utf8'),
 					exampleEpisode = {
 						"title": "#3 Zingle",
 						"year": "2006",

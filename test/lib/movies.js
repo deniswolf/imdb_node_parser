@@ -1,6 +1,8 @@
 var fs = require('fs'),
 		path = require('path'),
-		assert = require("assert"),
+		chai = require('chai'),
+		chaiThings = chai.use(require('chai-things')),
+		expect = chai.expect,
 		parsers = require("../../lib/parsers");
 
 	describe('Parser for movie.list', function(){
@@ -9,7 +11,7 @@ var fs = require('fs'),
 				var lineWithTitle = "\"Salmon & Pumkin\" (1995)",
 					parsedJSONObject = [{title:'Salmon & Pumkin', year: "1995", type:"movie"}],
 					output = parsers.movies(lineWithTitle);
-				assert.deepEqual(output, parsedJSONObject);
+				expect(output).to.deep.equal(parsedJSONObject);
 			});
 
 			it('should parse line for series', function(){
@@ -17,7 +19,7 @@ var fs = require('fs'),
 					parsedJSONObject = [{title:'Salmon & Pumkin', year: "1995", type:"movie"}],
 					output = parsers.movies(lineWithTitleAndEpisode);
 
-				assert.deepEqual(output, parsedJSONObject);
+				expect(output).to.deep.equal(parsedJSONObject);
 			});
 
 			it('should process multiple lines', function(){
@@ -26,7 +28,7 @@ var fs = require('fs'),
 					parsedJSONObject = [{"title":"Salmon & Pumkin","year":"1995", type:"movie"},{"title":"Þettwa er ekkert mál","year":"2006", type:"movie"}],
 					output = parsers.movies(linesWithTitles	);
 
-				assert.deepEqual(output, parsedJSONObject);
+				expect(output).to.deep.equal(parsedJSONObject);
 			});
 		});
 
@@ -48,7 +50,7 @@ var fs = require('fs'),
 						}
 					],
 					output = parsers.movies(lineWithTitle);
-				assert.deepEqual(output, parsedJSONObject);
+				expect(output).to.deep.equal(parsedJSONObject);
 			});
 		});
 
@@ -57,20 +59,43 @@ var fs = require('fs'),
 				var comment = "------ lalala",
 					output = parsers.movies(comment);
 
-				assert.deepEqual([null], output);
+				expect(output).to.deep.equal([null]);
 			});
 		});
 
-		describe('when receives a bulk of mixed data', function(){
-			var bulkTextExample = fs.readFileSync(path.join(__dirname, '../../fixtures/movies.fixture'), 'utf8');
+		describe('when receives a bulk of mixed data', function () {
+			var bulkTextExample = fs.readFileSync(path.join(__dirname, '../../fixtures/movies.fixture'), 'utf8'),
+					exampleEpisode = {
+						"title": "#3 Zingle",
+						"year": "2006",
+						"type": "episode",
+						"episode": {
+							"title": "Is the Grwnyass Greener?",
+							"season": "1",
+							"number": "1",
+							"year": "2006"
+						}
+					},
+					exampleMovie = {
+						"title": "#3 Zingle",
+						"year": "2006",
+						"type": "movie"
+					},
+					output = [],
+					outputWithoutEmpyLines = [];
 
 			try {
 				output = parsers.movies(bulkTextExample);
-			} catch (e){
-				console.log(e)
+			} catch (e) {
+				console.log(e);
 			}
 
+			outputWithoutEmpyLines = output.filter(function(record){return record !== null});
 
+			expect(outputWithoutEmpyLines)
+				.to.have.length(236)
+				.and.include.one.deep.equal(exampleEpisode)
+				.and.include.one.deep.equal(exampleMovie);
 
 		});
 	});

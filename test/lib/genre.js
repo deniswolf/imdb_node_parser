@@ -22,6 +22,15 @@ var fs = require('fs'),
 			});
 		});
 
+		describe('when receives massive of entries', function(){
+			var bulkTextExample = fs.readFileSync(path.join(__dirname, '../../fixtures/genres.fixture'), 'utf8'),
+					outputWithoutEmptyLines = parser(bulkTextExample).filter(function(record){return record;});
+
+			it('is able to parse all of them', function(){
+				expect(outputWithoutEmptyLines).to.have.length(78);
+			});
+		});
+
 	});
 
 

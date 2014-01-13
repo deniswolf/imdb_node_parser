@@ -14,19 +14,29 @@ var fs = require('fs'),
 				expect(output).to.deep.equal(parsedJSONObject);
 			});
 
-			it('should parse line for series', function(){
-				var lineWithTitleAndEpisode = "\"Salmon & Pumkin\" (1995)",
-					parsedJSONObject = [{title:'Salmon & Pumkin', year: "1995", type:"movie"}],
-					output = parsers.movies(lineWithTitleAndEpisode);
-
-				expect(output).to.deep.equal(parsedJSONObject);
-			});
-
 			it('should process multiple lines', function(){
 				var linesWithTitles = "\"Salmon & Pumkin\" (1995)\n" +
 						"Þettwa er ekkert mál (2006)				2006\n",
 					parsedJSONObject = [{"title":"Salmon & Pumkin","year":"1995", type:"movie"},{"title":"Þettwa er ekkert mál","year":"2006", type:"movie"}],
 					output = parsers.movies(linesWithTitles	);
+
+				expect(output).to.deep.equal(parsedJSONObject);
+			});
+		});
+
+		describe('when receives line with series', function(){
+			it('should extract title, year and running period', function(){
+				var lineWithTitleAndEpisode = '"Bi.L.I.F. 2" (2013)					2013-????',
+					parsedJSONObject = [{
+						title:'Bi.L.I.F. 2',
+						year: '2013',
+						running: {
+							from: "2013",
+							to: "????"
+						},
+						type: 'series'
+					}],
+					output = parsers.movies(lineWithTitleAndEpisode);
 
 				expect(output).to.deep.equal(parsedJSONObject);
 			});
@@ -46,6 +56,25 @@ var fs = require('fs'),
 								season: "3",
 								number: "8",
 								year: "1996"
+							}
+						}
+					],
+					output = parsers.movies(lineWithTitle);
+				expect(output).to.deep.equal(parsedJSONObject);
+			});
+
+			it('should extract data even if there is no title', function(){
+				var lineWithTitle = '"Bi.L.wnya. No somos ángeles" (2007) {(#1.54)}		2007',
+					parsedJSONObject = [
+						{
+							title:"Bi.L.wnya. No somos ángeles",
+							year: "2007",
+							type: "episode",
+							episode: {
+								title: null,
+								season: "1",
+								number: "54",
+								year: "2007"
 							}
 						}
 					],
@@ -77,12 +106,18 @@ var fs = require('fs'),
 						}
 					},
 					exampleMovie = {
-						"title": "#3 Zingle",
-						"year": "2006",
+						"title": "Znyachaznyarownyane podwórko",
+						"year": "1974",
 						"type": "movie"
 					},
+					exampleSeries = {
+						"title": "#3 Zingle",
+						"year": "2006",
+						"type": "series",
+						"running": {"from":"2006", "to":"????"}
+					},
 					output = [],
-					outputWithoutEmpyLines = [];
+					outputWithoutEmptyLines = [];
 
 			try {
 				output = parsers.movies(bulkTextExample);
@@ -90,12 +125,20 @@ var fs = require('fs'),
 				console.log(e);
 			}
 
-			outputWithoutEmpyLines = output.filter(function(record){return record !== null});
+			outputWithoutEmptyLines = output.filter(function(record){return record !== null});
 
-			expect(outputWithoutEmpyLines)
-				.to.have.length(236)
-				.and.include.one.deep.equal(exampleEpisode)
-				.and.include.one.deep.equal(exampleMovie);
+			it('should extract all entities properly',function(){
+				expect(outputWithoutEmptyLines).to.have.length(236);
+			});
+			it('should extract movies', function(){
+				expect(outputWithoutEmptyLines).to.include.one.deep.equal(exampleMovie);
+			});
+			it('should extract series', function(){
+				expect(outputWithoutEmptyLines).to.include.one.deep.equal(exampleSeries);
+			});
+			it('should extract episodes', function(){
+				expect(outputWithoutEmptyLines).to.include.one.deep.equal(exampleEpisode);
+			});
 
 		});
 	});

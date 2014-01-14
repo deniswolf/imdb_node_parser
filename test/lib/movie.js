@@ -153,7 +153,7 @@ var fs = require('fs'),
 			outputWithoutEmptyLines = output.filter(function(record){return record !== null});
 
 			it('should extract all entities properly',function(){
-				expect(outputWithoutEmptyLines).to.have.length(235);
+				expect(outputWithoutEmptyLines).to.have.length(236);
 			});
 			it('should extract movie', function(){
 				expect(outputWithoutEmptyLines).to.include.one.deep.equal(exampleMovie);

@@ -3,7 +3,7 @@ var fs = require('fs'),
 		chai = require('chai'),
 		chaiThingsEnabled = chai.use(require('chai-things')),
 		expect = chai.expect,
-		parser = require("../../lib/parser").genre;
+		parser = require("../../../lib/parser").genre;
 
 	describe('Parser for genres', function(){
 

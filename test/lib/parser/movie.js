@@ -3,7 +3,7 @@ var fs = require('fs'),
 		chai = require('chai'),
 		chaiThings = chai.use(require('chai-things')),
 		expect = chai.expect,
-		parser = require("../../lib/parser").movie;
+		parser = require("../../../lib/parser").movie;
 
 	describe('Parser for movie.list', function(){
 		describe('when receives line with a movie', function(){

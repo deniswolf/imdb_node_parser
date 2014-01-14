@@ -30,9 +30,10 @@ describe('Import', function () {
 		};
 
 		outputStream._write = function(data, enc, callback){
-			expect(data).to.be.deep.equal(outputString);
+			expect(data).to.be.equal(outputString);
 			done();
 		};
+
 		new Import(sourceStream, 'movie', outputStream);
 	});
 

@@ -8,14 +8,14 @@ var fs = require('fs'),
 	describe('Parser for movie.list', function(){
 		describe('when receives line with a movie', function(){
 			it('should extract title and year', function(){
-				var lineWithTitle = "\"Salmon & Pumkin\" (1995)",
+				var lineWithTitle = "Salmon & Pumkin (1995)",
 					parsedJSONObject = [{title:'Salmon & Pumkin', year: "1995", "version": null, type:"movie"}],
 					output = parser(lineWithTitle);
 				expect(output).to.deep.equal(parsedJSONObject);
 			});
 
 			it('should process multiple lines', function(){
-				var linesWithTitles = "\"Salmon & Pumkin\" (1995)\n" +
+				var linesWithTitles = "Salmon & Pumkin (1995)\n" +
 						"Þettwa er ekkert mál (2006)				2006\n",
 					parsedJSONObject = [
 						{"title":"Salmon & Pumkin","year":"1995", "version": null,  type:"movie"},
@@ -153,7 +153,7 @@ var fs = require('fs'),
 			outputWithoutEmptyLines = output.filter(function(record){return record !== null});
 
 			it('should extract all entities properly',function(){
-				expect(outputWithoutEmptyLines).to.have.length(236);
+				expect(outputWithoutEmptyLines).to.have.length(235);
 			});
 			it('should extract movie', function(){
 				expect(outputWithoutEmptyLines).to.include.one.deep.equal(exampleMovie);

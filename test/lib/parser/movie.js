@@ -53,6 +53,7 @@ var fs = require('fs'),
 							from: "2013",
 							to: "????"
 						},
+						"suspended": null,
 						"version": null,
 						type: 'series'
 					}],
@@ -138,6 +139,7 @@ var fs = require('fs'),
 						"title": "#3 Zingle",
 						"year": "2006",
 						"version": null,
+						"suspended": null,
 						"type": "series",
 						"running": {"from":"2006", "to":"????"}
 					},

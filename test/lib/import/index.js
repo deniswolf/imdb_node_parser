@@ -20,7 +20,7 @@ describe('Import', function () {
 		var sourceStream = new Stream.Readable(),
 				outputStream = new Stream.Writable({objectMode:true}),
 				movieString = '"Bi.L.wnya. No somos ángeles" (2007) {(#1.54)}		2007',
-				outputString = '{"title":"Bi.L.wnya. No somos ángeles","year":"2007","version":null,"type":"episode","episode":{"title":null,"season":"1","number":"54","year":"2007"}}';
+				outputString = '{"title":"Bi.L.wnya. No somos ángeles","year":"2007","version":null,"type":"episode","episode":{"title":null,"season":"1","number":"54","year":"2007"}}\n';
 
 		sourceStream._read = function(){
 			sourceStream.push(movieString);

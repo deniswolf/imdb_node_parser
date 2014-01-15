@@ -14,6 +14,7 @@ var fs = require('fs'),
 						title: 'Nosferatu, eine Symphonie des Grauens',
 						year: '1922',
 						genre: 'horror',
+						type: 'movie',
 						version: null
 					}],
 					output = parser(comment);

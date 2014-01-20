@@ -11,7 +11,7 @@ describe('Import', function () {
 	it('accepts input and output streams', function () {
 		var sourceStream = new Stream(),
 				outputStream = new Stream(),
-				initImport = function(){new Import(sourceStream, 'something', outputStream);};
+				initImport = function(){new Import(sourceStream, 'movie', outputStream);};
 
 		expect(initImport).not.to.throw();
 	});

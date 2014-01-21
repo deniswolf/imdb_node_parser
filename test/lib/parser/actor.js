@@ -30,6 +30,23 @@ var fs = require('fs'),
 			});
 		});
 
+		describe('when receives a line for single actor with multiple works', function(){
+			it('returns name, title, year and character', function(){
+				var chunk = '20DD and Friends\t\t\t20dd: Moscow Tour \'95 (1995) (TV)  [Themselves]\n'+
+				'\t\t\t\t"Die große Romance" (2010) {(#3.5)}  [Cats]',
+					playEntry = [
+						{"name": "20DD and Friends", "type": "actor", "works": [
+							{"title": "20dd: Moscow Tour '95", "year": "1995", "version": null, "type": "movie", "role": "Themselves"},
+							{"title": "Die große Romance", "year": "2010", "version": null, "type": "episode",
+								"episode":
+								{"title": null, "season": "3", "number": "5", "year": null}, "role": "Cats"}
+						]}
+					],
+					output = parser(chunk);
+				expect(output).to.deep.equal(playEntry);
+			});
+		});
+
 		xdescribe('when receives massive of entries', function(){
 //			var bulkTextExample = fs.readFileSync(path.join(__dirname, '../../fixtures/genres.fixture'), 'utf8'),
 //					outputWithoutEmptyLines = parser(bulkTextExample).filter(function(record){return record;});

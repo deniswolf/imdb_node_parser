@@ -10,16 +10,19 @@ var fs = require('fs'),
 		describe('when receives a single line', function(){
 			it('returns name, title, year and character', function(){
 				var chunk = '20DD and Friends\t\t\t20dd: Moscow Tour \'95 (1995) (TV)  [Themselves]',
+					//chunk = '3 Nya, Die		"Die große Romance" (2010) {(#3.5)}  [Cats]',
 					playEntry = [{
-						name: '20DD and Friends',
-						piece: {
-							title: '20dd: Moscow Tour \'95',
-							year: '1995',
-							type: 'movie',
-							version: null
-						},
-						character: 'Themselves',
-						type: 'actor'
+						"name": '20DD and Friends',
+						"works": [
+							{
+								"role": "Themselves",
+								"title": "20dd: Moscow Tour '95",
+								"type": "movie",
+								"version": null,
+								"year": "1995"
+							}
+						],
+						"type": 'actor'
 					}],
 					output = parser(chunk);
 

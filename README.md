@@ -10,7 +10,6 @@ parses STDIN or file, writes JSON to STDOUT or file, for more info: `./extract.j
 ### `download.js`
 download archives from IMDB, extracts them and converts from `latin1` encoding to `utf8`, for more info: `./download.js -h`
 
-
 ##Currently supported files:
 
 * movies.list
@@ -24,7 +23,7 @@ download archives from IMDB, extracts them and converts from `latin1` encoding t
 Returns array of results with movies, episodes, series.
 
 #### movie:
-```
+```js
 {
   "title":"Movie Title",
   // year or ???? if unknown
@@ -37,7 +36,7 @@ Returns array of results with movies, episodes, series.
 
 #### series
 
-```
+```js
 {
   "title": "Series Title",
   // year or ???? if unknown
@@ -53,7 +52,7 @@ Returns array of results with movies, episodes, series.
 ```
 
 #### episode
-```
+```js
 {
   "title": "Series Title",
   "year": "2006",
@@ -77,7 +76,7 @@ Information is similar to movies.list, but could be less specific (suspended etc
 
 #### movie
 
-```
+```js
 {
   "title": "Movie Title",
   "year": "2002",
@@ -88,7 +87,7 @@ Information is similar to movies.list, but could be less specific (suspended etc
 ```
 
 #### series
-```
+```js
 {
   "title": "Series Title",
   "year": "2002",
@@ -99,7 +98,7 @@ Information is similar to movies.list, but could be less specific (suspended etc
 ```
 
 #### episode
-```
+```js
 {
   "title": "Series Title",
   "year": "2006",
@@ -117,12 +116,10 @@ Information is similar to movies.list, but could be less specific (suspended etc
 
 ### actors.list, actresses.list
 Returns list of actors/actresses.
-
 The only difference between returned info is **type**: "actor" or "actress" respectively.
-
 Collectives, bands and groups could be listed as single actor/actresses (those are IMDB's specifics).
 
-```
+```js
 {
   "name": "Actor's name",
   // list of actors works (same as in movies.list + actor's role)

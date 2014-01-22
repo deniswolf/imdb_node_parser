@@ -11,14 +11,19 @@ program
 	.usage('node.js cli.js -t type | stream')
 	.option('-t, --type [type]', 'peg filter to apply. default: movie', 'movies')
 	.option('-p, --print', 'print results to STDOUT.')
+	.option('-i, --input', 'accept input from STDIN.')
 	.parse(process.argv);
 
 contentType = program.type;
 
-inputStream = fs.createReadStream('./tmp/'+contentType+'.list');
-
 if(program.print){
 	outputStream = process.stdout;
+}
+
+if(program.input){
+	inputStream = process.stdin;
+} else {
+	inputStream = fs.createReadStream('./tmp/'+contentType+'.list');
 }
 
 if(!outputStream){

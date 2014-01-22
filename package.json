@@ -7,7 +7,8 @@
     "ftp": "~0.3.5",
     "lazy": "~1.0.11",
     "pegjs": "~0.8.0",
-    "commander": "~2.1.0"
+    "commander": "~2.1.0",
+    "iconv": "~2.0.7"
   },
   "devDependencies": {
     "mocha": "~1.17.0",

@@ -9,10 +9,11 @@ var program = require('commander'),
 
 program
 	.version('0.0.2')
-	.usage('node.js cli.js -t type | stream')
+	.usage('-t type')
 	.option('-t, --type [type]', 'peg filter to apply. default: movie', 'movies')
 	.option('-p, --print', 'print results to STDOUT.')
 	.option('-i, --input', 'accept input from STDIN.')
+	.option('-f, --from [filename]', 'read from the [filename]')
 	.option('-o, --output [filename]', 'write results to this file.')
 	.parse(process.argv);
 
@@ -27,6 +28,8 @@ if(program.print){
 
 if(program.input){
 	inputStream = process.stdin;
+} else if(program.from){
+	inputStream = fs.createReadStream(path.resolve(program.from));
 } else {
 	inputStream = fs.createReadStream('./tmp/'+contentType+'.list');
 }

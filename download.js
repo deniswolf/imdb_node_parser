@@ -11,6 +11,7 @@ var Downloader = require('./lib/downloader'),
 
 downloader.on('completed', function(){
 	console.log('all files were downloaded');
+	process.exit(0);
 });
 
 downloader.fetchAll();

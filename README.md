@@ -72,6 +72,7 @@ Returns array of results with movies, episodes, series.
 
 ### genres.list
 Returns a list of movies, episodes, series with Genre included.
+
 Information is similar to movies.list, but could be less specific (suspended etc states could be omitted).
 
 #### movie
@@ -116,7 +117,9 @@ Information is similar to movies.list, but could be less specific (suspended etc
 
 ### actors.list, actresses.list
 Returns list of actors/actresses.
+
 The only difference between returned info is **type**: "actor" or "actress" respectively.
+
 Collectives, bands and groups could be listed as single actor/actresses (those are IMDB's specifics).
 
 ```js

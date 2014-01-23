@@ -139,3 +139,24 @@ Collectives, bands and groups could be listed as single actor/actresses (those a
   "type": "actor"
 }
 ```
+
+### directors.list
+
+Returns list of directors.
+Almost identical to Actors, except for type `director` and absence of `role` in Works.
+
+```js
+{
+  "name": "Director's name",
+  // list of director's works (same as in movies.list)
+  "works": [
+    {
+      "title": "Some title",
+      "type": "movie",
+      "version": null,
+      "year": "1995"
+    }
+  ],
+  "type": "director"
+}
+```

@@ -1,6 +1,4 @@
-var fs = require('fs'),
-		path = require('path'),
-		chai = require('chai'),
+var chai = require('chai'),
 		chaiThingsEnabled = chai.use(require('chai-things')),
 		expect = chai.expect,
 		parser = require("../../../lib/parser").actresses;
@@ -66,15 +64,6 @@ var fs = require('fs'),
 
 				expect(output).to.deep.equal(playEntry);
 			});
-		});
-
-		xdescribe('when receives massive of entries', function(){
-//			var bulkTextExample = fs.readFileSync(path.join(__dirname, '../../fixtures/genres.fixture'), 'utf8'),
-//					outputWithoutEmptyLines = parser(bulkTextExample).filter(function(record){return record;});
-//
-//			it('is able to parse all of them', function(){
-//				expect(outputWithoutEmptyLines).to.have.length(78);
-//			});
 		});
 
 	});

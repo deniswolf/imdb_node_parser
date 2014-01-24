@@ -9,11 +9,12 @@ var fs = require('fs'),
 
 		describe('when receives a single line', function(){
 			it('returns title, year and genre', function(){
-				var comment = 'Nosferatu, eine Symphonie des Grauens (1922)		Horror',
+				var comment = 'Nosferatu, eine Symphonie des Grauens II (2022)	(TV)	Horror',
 					movieWithGenre = [{
-						title: 'Nosferatu, eine Symphonie des Grauens',
-						year: '1922',
+						title: 'Nosferatu, eine Symphonie des Grauens II',
+						year: '2022',
 						genre: 'horror',
+						format: 'TV',
 						type: 'movie',
 						version: null
 					}],

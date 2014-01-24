@@ -17,6 +17,7 @@ var chai = require('chai'),
 								"type": "movie",
 								"version": null,
 								"format": null,
+								"suspended": null,
 								"year": "2012"
 							}
 						],
@@ -48,6 +49,7 @@ var chai = require('chai'),
 									"year": "2007",
 									"version": null,
 									"format": null,
+									"suspended": null,
 									"type": "movie"
 								},
 								{
@@ -55,6 +57,7 @@ var chai = require('chai'),
 									"year": "2007",
 									"version": null,
 									"format": null,
+									"suspended": null,
 									"type": "movie"
 								},
 								{
@@ -62,6 +65,7 @@ var chai = require('chai'),
 									"year": "1997",
 									"version": null,
 									"format": null,
+									"suspended": null,
 									"type": "movie"
 								},
 								{
@@ -69,6 +73,7 @@ var chai = require('chai'),
 									"year": "2003",
 									"version": null,
 									"format": null,
+									"suspended": null,
 									"type": "movie"
 								},
 								{
@@ -76,6 +81,7 @@ var chai = require('chai'),
 									"year": "2004",
 									"version": null,
 									"format": null,
+									"suspended": null,
 									"type": "movie"
 								},
 								{
@@ -83,6 +89,7 @@ var chai = require('chai'),
 									"year": "????",
 									"version": null,
 									"format": null,
+									"suspended": null,
 									"type": "movie"
 								},
 								{
@@ -90,6 +97,7 @@ var chai = require('chai'),
 									"year": "1983",
 									"version": null,
 									"format": null,
+									"suspended": null,
 									"type": "movie"
 								}
 							]

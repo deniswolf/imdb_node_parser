@@ -17,6 +17,7 @@ var chai = require('chai'),
 								"type": "movie",
 								"version": null,
 								"format": "TV",
+								"suspended": null,
 								"year": "1995"
 							}
 						],
@@ -30,7 +31,7 @@ var chai = require('chai'),
 
 		describe('when receives a line for single actor with multiple works', function(){
 			it('returns name, title, year and character', function(){
-				var chunk = '20DD and Friends\t\t\t20dd: Moscow Tour \'95 (1995) (TV)  [Themselves]\n'+
+				var chunk = '20DD and Friends\t\t\t20dd: Moscow Tour \'95 (1995) (TV) {{SUSPENDED}} [Themselves]\n'+
 				'\t\t\t\t"Die große Romance" (2010) {(#3.5)}  [Cats]',
 					playEntry = [
 						{"name": "20DD and Friends", "type": "actor", "works": [
@@ -40,6 +41,7 @@ var chai = require('chai'),
 								"version": null,
 								"type": "movie",
 								"format": "TV",
+								"suspended": true,
 								"role": "Themselves"
 							},
 							{"title": "Die große Romance", "year": "2010", "version": null, "type": "episode",

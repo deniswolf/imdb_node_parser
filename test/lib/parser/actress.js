@@ -17,6 +17,7 @@ var chai = require('chai'),
 								"type": "movie",
 								"version": null,
 								"format": null,
+								"suspended": null,
 								"year": "2009"
 							}
 						],

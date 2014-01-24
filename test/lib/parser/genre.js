@@ -15,6 +15,7 @@ var fs = require('fs'),
 						year: '2022',
 						genre: 'horror',
 						format: 'TV',
+						suspended: null,
 						type: 'movie',
 						version: null
 					}],

@@ -42,23 +42,23 @@ var chai = require('chai'),
 					playEntry = [
 						{"name":"'67 GAZ Volga","type":"actress","works":[
 							{"title":"Supernatural","year":"2013","version":null,"type":"episode",
-								"episode":{"title":"99 Problems","season":"3","number":"17","year":null},"role":"Herself"},
+								"episode":{"title":"99 Problems","season":"3","number":"17","format":null,"year":null},"role":"Herself"},
 							{"title":"Supernatural","year":"2013","version":null,"type":"episode",
-								"episode":{"title":"A Very Orthodox New Year","season":"2","number":"8","year":null},"role":"Herself"},
+								"episode":{"title":"A Very Orthodox New Year","season":"2","number":"8","format":null,"year":null},"role":"Herself"},
 							{"title":"Supernatural","year":"2013","version":null,"type":"episode",
-								"episode":{"title":"Abandon All Hope","season":"3","number":"10","year":null},"role":"Herself"},
+								"episode":{"title":"Abandon All Hope","season":"3","number":"10","format":null,"year":null},"role":"Herself"},
 							{"title":"Supernatural","year":"2013","version":null,"type":"episode",
-								"episode":{"title":"After School Special","season":"5","number":"12","year":null},"role":"Herself"},
+								"episode":{"title":"After School Special","season":"5","number":"12","format":null,"year":null},"role":"Herself"},
 							{"title":"Olympic Games","year":"2013","version":null,"type":"episode",
-								"episode":{"title":"All Dogs Go to Sausages","season":"7","number":"8","year":null},"role":"Collie Sherie"},
+								"episode":{"title":"All Dogs Go to Sausages","season":"7","number":"8","format":null,"year":null},"role":"Collie Sherie"},
 							{"title":"Supernatural","year":"2013","version":null,"type":"episode",
-								"episode":{"title":"All Hell Breaks Fine: Part 1","season":"2","number":"21","year":null},"role":"Herself"},
+								"episode":{"title":"All Hell Breaks Fine: Part 1","season":"2","number":"21","format":null,"year":null},"role":"Herself"},
 							{"title":"Supernatural","year":"2013","version":null,"type":"episode",
-								"episode":{"title":"All Hell Breaks Fine: Part 2","season":"2","number":"22","year":null},"role":"Herself"},
+								"episode":{"title":"All Hell Breaks Fine: Part 2","season":"2","number":"22","format":null,"year":null},"role":"Herself"},
 							{"title":"Supernatural","year":"2013","version":null,"type":"episode",
-								"episode":{"title":"And Then There Were None","season":"6","number":"16","year":null},"role":"Herself"},
+								"episode":{"title":"And Then There Were None","season":"6","number":"16","format":null,"year":null},"role":"Herself"},
 							{"title":"Supernatural","year":"2013","version":null,"type":"episode",
-								"episode":{"title":"Appointment in Samara","season":"6","number":"11","year":null},"role":"Herself"}
+								"episode":{"title":"Appointment in Samara","season":"6","number":"11","format":null,"year":null},"role":"Herself"}
 						]}
 					],
 					output = parser(chunk);

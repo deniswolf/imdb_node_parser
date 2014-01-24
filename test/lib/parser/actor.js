@@ -44,7 +44,7 @@ var chai = require('chai'),
 							},
 							{"title": "Die große Romance", "year": "2010", "version": null, "type": "episode",
 								"episode":
-								{"title": null, "season": "3", "number": "5", "year": null}, "role": "Cats"}
+								{"title": null, "season": "3", "number": "5", "format":null, "year": null}, "role": "Cats"}
 						]}
 					],
 					output = parser(chunk);

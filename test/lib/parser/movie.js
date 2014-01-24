@@ -66,15 +66,16 @@ var fs = require('fs'),
 		describe('when receives line with an episode', function(){
 			it('should extract title and year', function(){
 				var lineWithTitle = "\"Salmon & Pumkin\" (1995)" +
-						" {I Think I Biwanwadwa/Zwazu's Off Dway Off (#3.8)}	1996",
+						" {I Think I Biwanwadwa/Zwazu's Off Dway Off (V) (#3.8)}	1996",
 					parsedJSONObject = [
 						{
 							title:"Salmon & Pumkin",
 							year: "1995",
-							"version": null,
+							version: null,
 							type: "episode",
 							episode: {
 								title: "I Think I Biwanwadwa/Zwazu's Off Dway Off",
+								format: "V",
 								season: "3",
 								number: "8",
 								year: "1996"
@@ -91,12 +92,13 @@ var fs = require('fs'),
 						{
 							title:"Bi.L.wnya. No somos ángeles",
 							year: "2007",
-							"version": null,
+							version: null,
 							type: "episode",
 							episode: {
 								title: null,
 								season: "1",
 								number: "54",
+								format: null,
 								year: "2007"
 							}
 						}
@@ -126,6 +128,7 @@ var fs = require('fs'),
 							"title": "Is the Grwnyass Greener?",
 							"season": "1",
 							"number": "1",
+							"format": null,
 							"year": "2006"
 						}
 					},

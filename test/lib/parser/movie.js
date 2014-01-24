@@ -8,8 +8,8 @@ var fs = require('fs'),
 	describe('Parser for movie.list', function(){
 		describe('when receives line with a movie', function(){
 			it('should extract title and year', function(){
-				var lineWithTitle = "Salmon & Pumkin (1995)",
-					parsedJSONObject = [{title:'Salmon & Pumkin', year: "1995", "version": null, type:"movie"}],
+				var lineWithTitle = "Salmon & Pumkin (1995) (TV)",
+					parsedJSONObject = [{title:'Salmon & Pumkin', year: "1995", "version": null, type:"movie", format: "TV"}],
 					output = parser(lineWithTitle);
 				expect(output).to.deep.equal(parsedJSONObject);
 			});
@@ -18,8 +18,8 @@ var fs = require('fs'),
 				var linesWithTitles = "Salmon & Pumkin (1995)\n" +
 						"Þettwa er ekkert mál (2006)				2006\n",
 					parsedJSONObject = [
-						{"title":"Salmon & Pumkin","year":"1995", "version": null,  type:"movie"},
-						{"title":"Þettwa er ekkert mál","year":"2006", "version": null, type:"movie"}
+						{"title":"Salmon & Pumkin","year":"1995", "version": null,  type:"movie", format: null},
+						{"title":"Þettwa er ekkert mál","year":"2006", "version": null, type:"movie", format: null}
 					],
 					output = parser(linesWithTitles	);
 
@@ -33,8 +33,8 @@ var fs = require('fs'),
 						"Nostalgia (2006/II)         2006\n"+
 						"Nostalgia (2007)          2007\n"+
 						"Nostalgia (2008)          2008\n",
-						firstMovie = { title: 'Nostalgia', year: '2006', version: 'I', type: 'movie' },
-						secondMovie = { title: 'Nostalgia', year: '2006', version: 'II', type: 'movie' },
+						firstMovie = { title: 'Nostalgia', year: '2006', version: 'I', type: 'movie', format: null },
+						secondMovie = { title: 'Nostalgia', year: '2006', version: 'II', type: 'movie', format: null },
 						output = parser(linesWithMovies);
 
 				expect(output).
@@ -133,6 +133,7 @@ var fs = require('fs'),
 						"title": "Znyachaznyarownyane podwórko",
 						"year": "1974",
 						"version": null,
+						"format": null,
 						"type": "movie"
 					},
 					exampleSeries = {

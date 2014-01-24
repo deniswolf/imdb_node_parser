@@ -16,6 +16,7 @@ var chai = require('chai'),
 								"title": "20dd: Moscow Tour '95",
 								"type": "movie",
 								"version": null,
+								"format": "TV",
 								"year": "1995"
 							}
 						],
@@ -33,7 +34,14 @@ var chai = require('chai'),
 				'\t\t\t\t"Die große Romance" (2010) {(#3.5)}  [Cats]',
 					playEntry = [
 						{"name": "20DD and Friends", "type": "actor", "works": [
-							{"title": "20dd: Moscow Tour '95", "year": "1995", "version": null, "type": "movie", "role": "Themselves"},
+							{
+								"title": "20dd: Moscow Tour '95",
+								"year": "1995",
+								"version": null,
+								"type": "movie",
+								"format": "TV",
+								"role": "Themselves"
+							},
 							{"title": "Die große Romance", "year": "2010", "version": null, "type": "episode",
 								"episode":
 								{"title": null, "season": "3", "number": "5", "year": null}, "role": "Cats"}

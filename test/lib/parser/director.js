@@ -16,6 +16,7 @@ var chai = require('chai'),
 								"title": "Tito on an ice cream",
 								"type": "movie",
 								"version": null,
+								"format": null,
 								"year": "2012"
 							}
 						],
@@ -46,42 +47,49 @@ var chai = require('chai'),
 									"title": "Deaf Poof",
 									"year": "2007",
 									"version": null,
+									"format": null,
 									"type": "movie"
 								},
 								{
 									"title": "Teahouse",
 									"year": "2007",
 									"version": null,
+									"format": null,
 									"type": "movie"
 								},
 								{
 									"title": "Jackie White",
 									"year": "1997",
 									"version": null,
+									"format": null,
 									"type": "movie"
 								},
 								{
 									"title": "Kill la Kill: Vol. 1",
 									"year": "2003",
 									"version": null,
+									"format": null,
 									"type": "movie"
 								},
 								{
 									"title": "Kill la Kill: Vol. 2",
 									"year": "2004",
 									"version": null,
+									"format": null,
 									"type": "movie"
 								},
 								{
 									"title": "Kill la Kill: Vol. 3",
 									"year": "????",
 									"version": null,
+									"format": null,
 									"type": "movie"
 								},
 								{
 									"title": "Love Birds in Cage",
 									"year": "1983",
 									"version": null,
+									"format": null,
 									"type": "movie"
 								}
 							]

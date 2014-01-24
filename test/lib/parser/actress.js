@@ -16,6 +16,7 @@ var chai = require('chai'),
 								"title": "Night of the Demons",
 								"type": "movie",
 								"version": null,
+								"format": null,
 								"year": "2009"
 							}
 						],

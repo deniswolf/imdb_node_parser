@@ -16,6 +16,7 @@ download archives from IMDB, extracts them and converts from `latin1` encoding t
 * genres.list
 * actors.list
 * actresses.list
+* directors.list
 
 ##Extracted info:
 
@@ -26,26 +27,32 @@ Returns array of results with movies, episodes, series.
 ```js
 {
   "title":"Movie Title",
-  // year or ???? if unknown
+  // release year or ???? if unknown
   "year":"1995",
   // I, II etc for movies released in the same year with the same title
   "version": null,
-  type:"movie"
+  // true if series were cancelled
+  "suspended": true,
+  // Format of the media which was used to distribute this version.
+  // Could be TV fo TV relases, V for VHS/DVD, VG for videogames
+  "format": null,
+  // all the movies has type "movie", just as actors - "actor" etc
+  "type":"movie"
 }
 ```
 
 #### series
 
+Series has the similar info to movie + running period.
+
 ```js
 {
   "title": "Series Title",
-  // year or ???? if unknown
   "year": "2006",
-  // I, II etc for series released in the same year with the same title
   "version": null,
-  // {SUSPENDED} if series were cancelled
   "suspended": null,
   "type": "series",
+  "format": "V"
   // years when the show was produced, ???? for unknown or ongoing
   "running": {"from":"2006", "to":"????"}
 }
@@ -99,6 +106,9 @@ Information is similar to movies.list, but could be less specific (suspended etc
 ```
 
 #### episode
+
+Episode is similar both to movie and series, but has "format" inside of "episode" sub-object.
+
 ```js
 {
   "title": "Series Title",
@@ -109,6 +119,7 @@ Information is similar to movies.list, but could be less specific (suspended etc
     "title": "Episode Title",
     "season": "1",
     "number": "1",
+    "format": null,
     "year": "2006"
   },
   "genre": "documentary"
@@ -131,6 +142,8 @@ Collectives, bands and groups could be listed as single actor/actresses (those a
       "role": "Actor's role in piece",
       "title": "Some title",
       "type": "movie",
+      "suspended": null,
+      "format": null,
       "version": null,
       "year": "1995"
     }
@@ -153,6 +166,8 @@ Almost identical to Actors, except for type `director` and absence of `role` in 
     {
       "title": "Some title",
       "type": "movie",
+      "suspended": null,
+      "format": null,
       "version": null,
       "year": "1995"
     }
